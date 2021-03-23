@@ -4,6 +4,7 @@ import { User } from '@/interfaces'
 import { sampleUserData } from '@/utils/sample-data'
 import Layout from '@/components/Layout'
 import ListDetail from '@/components/ListDetail'
+import React from 'react'
 
 type Props = {
   item?: User
@@ -11,6 +12,12 @@ type Props = {
 }
 
 const StaticPropsDetail = ({ item, errors }: Props) => {
+  // const [t, setT] = React.useState(false)
+
+  // React.useEffect(() => {
+  //   setT(false)
+  // }, [t])
+
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">

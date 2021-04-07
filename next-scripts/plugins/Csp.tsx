@@ -1,3 +1,4 @@
+import React from 'react'
 import crypto from 'crypto'
 
 const isDev = process.env.NODE_ENV !== 'production'
@@ -18,7 +19,7 @@ const directives: any = {
   connectSrc: ['self', () => 'https://*.ingest.sentry.io'],
 }
 
-export const CSPHead = ({ nonce }: { nonce: string }) => {
+export const CSPHead = ({ nonce }: { nonce: string }): React.ReactElement => {
   const csp = Object.keys(directives)
     .map((key) => {
       const list = directives[key]

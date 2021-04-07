@@ -1,12 +1,14 @@
-const { spawnSync } = require('child_process')
 const next = require('next')
 const { createServer } = require('http')
 const { srcDir, conf } = require('./utils/')
 
 const port = parseInt(process.env.PORT || '3000', 10)
-const isDev = process.env.NODE_ENV !== 'production'
 
-const dev = () => {
+type ServerParams = {
+  isDev?: boolean
+}
+
+export const dev = ({ isDev }: ServerParams = { isDev: true }) => {
   const app = next({
     dir: srcDir,
     conf,
@@ -15,9 +17,9 @@ const dev = () => {
   const handle = app.getRequestHandler()
 
   app.prepare().then(() => {
-    createServer((...args) => {
+    createServer((...args: any) => {
       handle(...args)
-    }).listen(port, (err) => {
+    }).listen(port, (err: any) => {
       if (err) {
         console.error(err)
         return
@@ -32,12 +34,6 @@ const dev = () => {
   })
 }
 
-const start = () => {
-  const dir = getDir()
-  spawnSync(`next`, [`start`, dir], { stdio: 'inherit' })
-}
-
-module.exports = {
-  dev,
-  start,
+export const start = () => {
+  return dev({ isDev: false })
 }

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const { Command } = require('commander')
-const pkg = require('./package.json')
-const { dev, start } = require('./start')
-const { build } = require('./build')
+import { Command } from 'commander'
+import { pkg } from './utils'
+import { dev, start } from './start'
+import { build } from './build'
 
 const program = new Command()
   .version(pkg.version)
@@ -22,3 +22,5 @@ program.command('build').action(() => {
 })
 
 program.parse(process.argv)
+
+export default {}

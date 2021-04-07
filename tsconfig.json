@@ -10,7 +10,7 @@
       "dom",
       "esnext"
     ],
-    "module": "esnext",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
@@ -27,7 +27,6 @@
   ],
   "include": [
     "**/*.ts",
-    "**/*.tsx",
-    "next-scripts/plugins/csp.js"
+    "**/*.tsx"
   ]
 }

@@ -1,9 +1,16 @@
 {
-  "name": "next-scripts",
+  "name": "soy",
   "version": "1.0.0",
   "private": true,
   "workspaces":[
-    "next-scripts"
+    "soy-next"
   ],
+  "prettier": {
+    "parser": "typescript",
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all",
+    "tabWidth": 2
+  },
   "license": "MIT"
 }

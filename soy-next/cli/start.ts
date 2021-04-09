@@ -1,6 +1,6 @@
-const next = require('next')
-const { createServer } = require('http')
-const { srcDir, conf } = require('./utils/')
+import next from 'next'
+import { createServer } from 'http'
+import { srcDir, conf } from '../utils/'
 
 const port = parseInt(process.env.NEXT_SERVER_PORT || '3000', 10)
 
@@ -11,20 +11,15 @@ type ServerParams = {
 export const dev = ({ isDev }: ServerParams = { isDev: true }) => {
   const app = next({
     dir: srcDir,
-    conf,
+    conf: conf as any,
     dev: isDev,
   })
   const handle = app.getRequestHandler()
 
   app.prepare().then(() => {
-    createServer((...args: any) => {
-      handle(...args)
-    }).listen(port, (err: any) => {
-      if (err) {
-        console.error(err)
-        return
-      }
-
+    createServer((req, res) => {
+      handle(req, res)
+    }).listen(port, () => {
       console.log(
         `> Server listening at http://localhost:${port} as ${
           isDev ? 'development' : process.env.NODE_ENV

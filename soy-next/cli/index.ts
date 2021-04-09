@@ -4,6 +4,7 @@ import { Command } from 'commander'
 import { pkg } from '../utils'
 import { dev, start } from './start'
 import { build } from './build'
+import { analyze } from './analyze'
 
 const program = new Command()
   .version(pkg.version)
@@ -19,6 +20,10 @@ program.command('start').action(() => {
 
 program.command('build').action(() => {
   build()
+})
+
+program.command('analyze').action(() => {
+  analyze()
 })
 
 program.parse(process.argv)

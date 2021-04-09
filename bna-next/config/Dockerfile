@@ -38,7 +38,6 @@ RUN mkdir /mnt/efs
 
 WORKDIR /opt/app
 COPY --from=builder /opt/app/.next .next
-COPY --from=builder /opt/app/next.config.js next.config.js
 COPY --from=builder /opt/app/node_modules node_modules
 COPY --from=builder /opt/app/package.json package.json
 COPY --from=builder /opt/app/yarn.lock yarn.lock

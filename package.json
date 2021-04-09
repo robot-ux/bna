@@ -1,9 +1,9 @@
 {
-  "name": "soy",
+  "name": "bna",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "soy-next"
+    "bna-next"
   ],
   "scripts": {
     "publish": "lerna publish"

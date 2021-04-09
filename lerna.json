@@ -1,6 +1,6 @@
 {
   "packages": [
-    "soy-next"
+    "bna-next"
   ],
   "version": "0.0.1",
   "npmClient": "yarn"

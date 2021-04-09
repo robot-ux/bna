@@ -9,7 +9,8 @@
   "scripts": {
     "prebuild": "rm -rf ./dist",
     "build": "tsc --build && yarn copy-file",
-    "copy-file": "cp -r config/** dist/config"
+    "copy-file": "cp -r config/** dist/config",
+    "prepublish": "yarn build"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -2,9 +2,12 @@
   "name": "soy",
   "version": "1.0.0",
   "private": true,
-  "workspaces":[
+  "workspaces": [
     "soy-next"
   ],
+  "scripts": {
+    "publish": "lerna publish"
+  },
   "prettier": {
     "parser": "typescript",
     "singleQuote": true,
@@ -12,5 +15,8 @@
     "trailingComma": "all",
     "tabWidth": 2
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
 }

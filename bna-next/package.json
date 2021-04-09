@@ -6,6 +6,9 @@
   "bin": {
     "bna-next": "./dist/cli/index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prebuild": "rm -rf ./dist",
     "build": "tsc --build && yarn copy-file",
@@ -51,5 +54,5 @@
     "react-dom": "^17.0.1",
     "styled-components": "^5.2.1"
   },
-  "gitHead": "6b14642dfabf1f4291a30ca28e4bff4b701def31"
+  "gitHead": "1fe45a10c6a917f9032c9ee4a1bfc58760d84392"
 }

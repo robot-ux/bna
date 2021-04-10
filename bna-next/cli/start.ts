@@ -1,10 +1,7 @@
 import next from 'next'
 import { createServer } from 'http'
 import { srcDir, conf } from '../utils/'
-import {
-  getAssetPrefixByReq,
-  getCdnHost,
-} from '../components/dynamicAssetPrefix'
+import { getAssetPrefixByReq } from '../components'
 
 const port = parseInt(process.env.PORT || '3000', 10)
 
@@ -22,10 +19,11 @@ export const dev = ({ isDev }: ServerParams = { isDev: true }) => {
 
   app.prepare().then(() => {
     createServer((req, res) => {
-      app.setAssetPrefix(getAssetPrefixByReq(req)) // cdnHost + /_next/static/xx
+      const cdnHost = getAssetPrefixByReq(req)
+      app.setAssetPrefix(cdnHost) // cdnHost + /_next/static/xx
 
       // @ts-ignore
-      res.cdnHost = getCdnHost()
+      res.cdnHost = cdnHost
       handle(req, res)
     }).listen(port, () => {
       console.log(

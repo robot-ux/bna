@@ -11,7 +11,6 @@ import NextDocument, {
 import { CSPHead } from './Csp'
 import { SeoHead } from './SeoHead'
 import { createNonce } from './Csp'
-import { setCdnHost } from '../dynamicAssetPrefix'
 
 interface Props {
   styleTags: any
@@ -25,7 +24,7 @@ export type { DocumentContext }
 export { SeoHead, CSPHead, Head }
 
 export class Document extends NextDocument<Props> {
-  static async getInitialProps({ renderPage, res }: DocumentContext) {
+  static async getInitialProps({ renderPage }: DocumentContext) {
     const sheet = new ServerStyleSheet()
     const nonce = createNonce()
 
@@ -41,11 +40,6 @@ export class Document extends NextDocument<Props> {
     const styleTags = React.Children.map(styleTagsNotNonce, (child) =>
       React.cloneElement<any>(child, { nonce }),
     )
-
-    // @ts-ignore
-    const cdnHost = res?.cdnHost
-    setCdnHost(cdnHost)
-
     return { ...page, styleTags, nonce }
   }
 

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
-    "bna-next"
+    "packages/*"
   ],
   "scripts": {
     "publish": "lerna publish"

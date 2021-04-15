@@ -1,6 +1,6 @@
 {
   "packages": [
-    "bna-next"
+    "packages/*"
   ],
   "version": "0.0.7",
   "npmClient": "yarn"

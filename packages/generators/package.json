@@ -1,0 +1,20 @@
+{
+  "name": "@bna/generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "create-bna-app": "./index.js"
+  },
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "dependencies": {
+    "@types/yeoman-generator": "^4.11.3",
+    "chalk": "^4.1.0",
+    "commander": "^7.2.0",
+    "yeoman-environment": "^3.2.0",
+    "yeoman-generator": "^5.2.0",
+    "yosay": "^2.0.2"
+  }
+}

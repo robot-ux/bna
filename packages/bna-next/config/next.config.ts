@@ -22,12 +22,32 @@ const webpack = (config: any, options: any) => {
   return config
 }
 
+/**
+ * Fix load runtime env failed
+ */
+const _getPublicEnv = () => {
+  const envs = process.env
+  const res: any = {}
+
+  Object.keys(envs).forEach((k) => {
+    if (k.startsWith('NEXT_PUBLIC_')) {
+      res[k] = envs[k]
+    }
+  })
+
+  return res
+}
+
 export default {
   headers,
   webpack,
+  assetPrefix: process.env.NEXT_PUBLIC_STATIC_HOST,
   pageExtensions: ['mdx', 'jsx', 'js', 'ts', 'tsx'],
   generateBuildId: async () => {
     return commitHash
+  },
+  publicRuntimeConfig: {
+    ..._getPublicEnv(),
   },
   future: {
     webpack5: true,

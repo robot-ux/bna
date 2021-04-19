@@ -6,6 +6,9 @@
   "bin": {
     "create-bna-app": "./index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "node ./index.js"
   },
@@ -17,5 +20,5 @@
     "yeoman-generator": "^5.2.0",
     "yosay": "^2.0.2"
   },
-  "gitHead": "56429dffc10091a717ee9145f9031c2c1a1ff3ab"
+  "gitHead": "d8e5a732dd83aee51136fdebe60fb555c5dcd4f3"
 }

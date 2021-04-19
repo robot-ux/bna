@@ -12,32 +12,56 @@ const toLowerCase = (s: string) => {
 }
 
 const directives: any = {
-  defaultSrc: ['self'],
-  scriptSrc: ['self', isDev && 'unsafe-eval', (n: string) => `'nonce-${n}'`],
-  styleSrc: ['self', isDev && 'unsafe-inline'],
-  fontSrc: ['self', () => 'data:'],
-  connectSrc: ['self', () => 'https://*.ingest.sentry.io'],
+  defaultSrc: ["'self'"],
+  scriptSrc: [
+    "'self'",
+    isDev && "'unsafe-eval'",
+    (n: string) => `'nonce-${n}'`,
+  ],
+  styleSrc: ["'self'", isDev && "'unsafe-inline'"],
+  fontSrc: ["'self'", 'data:'],
+  connectSrc: ["'self'", 'https://report.binance.org'],
 }
 
 type Props = {
   nonce: string
   disabled?: boolean
+  directives?: {
+    [k: string]: any
+  }
 }
 
-export const CSPHead = ({ nonce, disabled }: Props): React.ReactElement => {
-  if (disabled) return <></>
-
+const _combineCspConfig = (custom: any = {}, nonce: string) => {
   const csp = Object.keys(directives)
     .map((key) => {
-      const list = directives[key]
+      const customList = custom[key] || []
+      const originList = directives[key] || []
+      let _list = originList.concat(...customList)
+
+      _list = _list
         .map((s: string | Function) =>
-          typeof s === 'function' ? s(nonce) : `'${s}'`,
+          typeof s === 'function' ? s(nonce) : `${s}`,
         )
         .filter((f: any) => f)
 
-      return `${toLowerCase(key)} ${list.join(' ')}`
+      return `${toLowerCase(key)} ${_list.join(' ')}`
     })
     .join('; ')
+
+  return csp
+}
+
+export const CSPHead = ({
+  nonce,
+  disabled,
+  directives,
+}: Props): React.ReactElement => {
+  if (disabled) return <></>
+
+  const csp = React.useMemo(() => _combineCspConfig(directives, nonce), [
+    directives,
+    nonce,
+  ])
 
   return <meta httpEquiv="Content-Security-Policy" content={csp} />
 }

@@ -6,6 +6,8 @@
     "packages/*"
   ],
   "scripts": {
+    "watch": "lerna run watch --parallel",
+    "bootstrap": "lerna bootstrap && lerna run build --stream && lerna link",
     "publish": "lerna publish"
   },
   "prettier": {

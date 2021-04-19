@@ -2,12 +2,12 @@ import React from 'react'
 import Head from 'next/head'
 import { NextSeo, NextSeoProps } from 'next-seo'
 
-const DEFAULT_FAVICON = `/static/images/favicon.png`
-const DEFAULT_IMAGE = `/static/images/dex_twitter.png`
+const DEFAULT_FAVICON = `/images/favicon.png`
+const DEFAULT_IMAGE = `/images/dex_twitter.png`
 
 export interface ISeoHead extends NextSeoProps {
   assetPrefix: string
-  origin: string
+  origin?: string
 }
 
 export const SeoHead = (props: ISeoHead) => {
@@ -20,7 +20,9 @@ export const SeoHead = (props: ISeoHead) => {
         'Binance | Binance Smart Chain | Binance Staking | Binance Swap | Binance.org',
       site_name:
         'Binance | Binance Smart Chain | Binance Staking | Binance Swap | Binance.org',
-      description: props.description,
+      description:
+        props.description ||
+        'Binance dual-chain system allows you the freedom to build your own decentralized blockchain apps securely and without the need for an intermediary. Set up your account and get started!',
       url: props.origin || 'https://www.binance.org/',
       images: [{ url: imgUrl }],
       ...props.openGraph,

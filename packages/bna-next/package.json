@@ -11,8 +11,8 @@
   },
   "scripts": {
     "prebuild": "rm -rf ./dist",
-    "build": "tsc && yarn copy-file",
-    "copy-file": "cp -r config/** dist/config",
+    "build": "tsc",
+    "watch": "tsc --watch",
     "prepublish": "yarn build"
   },
   "main": "dist/index.js",

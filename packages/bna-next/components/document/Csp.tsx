@@ -17,10 +17,24 @@ const directives: any = {
     "'self'",
     isDev && "'unsafe-eval'",
     (n: string) => `'nonce-${n}'`,
+    'https://www.googletagmanager.com',
+    'https://www.google-analytics.com',
   ],
   styleSrc: ["'self'", isDev && "'unsafe-inline'"],
+  imgSrc: [
+    "'self'",
+    'data:',
+    'https://www.googletagmanager.com',
+    'https://www.google-analytics.com',
+  ],
   fontSrc: ["'self'", 'data:'],
-  connectSrc: ["'self'", 'https://report.binance.org'],
+  connectSrc: [
+    "'self'",
+    'https://report.binance.org',
+    'https://www.googletagmanager.com',
+    'https://www.google-analytics.com',
+    'https://stats.g.doubleclick.net',
+  ],
 }
 
 type Props = {

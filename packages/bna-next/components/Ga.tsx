@@ -16,7 +16,7 @@ export const Ga = ({ id, disabled }: IGtag) => {
         dangerouslySetInnerHTML={{
           __html: `
           window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-          ga('create', ${id}, 'auto');
+          ga('create', '${id}', 'auto');
           ga('send', 'pageview');
               `,
         }}

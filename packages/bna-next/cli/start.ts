@@ -1,6 +1,7 @@
 import next from 'next'
 import { createServer } from 'http'
-import { srcDir, conf } from '../utils/'
+import { loadEnvConfig } from '@next/env'
+import { srcDir, getConfig } from '../utils/'
 
 const port = parseInt(process.env.PORT || '3000', 10)
 
@@ -8,18 +9,19 @@ type ServerParams = {
   isDev?: boolean
 }
 
-export const dev = ({ isDev }: ServerParams = { isDev: true }) => {
+export const dev = async ({ isDev }: ServerParams = { isDev: true }) => {
+  isDev && (await loadEnvConfig(srcDir))
+
   const app = next({
     dir: srcDir,
-    conf: conf as any,
+    conf: getConfig() as any,
     dev: isDev,
   })
+
   const handle = app.getRequestHandler()
 
   app.prepare().then(() => {
-    createServer((req, res) => {
-      handle(req, res)
-    }).listen(port, () => {
+    createServer(handle).listen(port, () => {
       console.log(
         `> Server listening at http://localhost:${port} as ${
           isDev ? 'development' : process.env.NODE_ENV

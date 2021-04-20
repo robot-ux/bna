@@ -18,7 +18,6 @@ const webpack = (config: any, options: any) => {
     include: [path.join(__dirname, '../')],
     use: [options.defaultLoaders.babel],
   })
-
   return config
 }
 
@@ -38,7 +37,7 @@ const _getPublicEnv = () => {
   return res
 }
 
-export default {
+export default () => ({
   headers,
   webpack,
   assetPrefix: process.env.NEXT_PUBLIC_STATIC_HOST,
@@ -52,4 +51,4 @@ export default {
   future: {
     webpack5: true,
   },
-}
+})

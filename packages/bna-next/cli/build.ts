@@ -1,6 +1,6 @@
-import { srcDir, conf } from '../utils'
+import { srcDir, getConfig } from '../utils'
 import nextBuild from 'next/dist/build'
 
 export const build = () => {
-  nextBuild(srcDir, conf as any)
+  nextBuild(srcDir, getConfig() as any)
 }

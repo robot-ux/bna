@@ -1,10 +1,10 @@
-// const { spawnSync } = require('child_process')
-// const getDir = () => process.cwd()
+import nextBuild from 'next/dist/build'
+import { srcDir, getConfig } from '../utils'
 
 export const analyze = () => {
-  // const dir = getDir()
-
-  // console.warn('Your need to `run yarn run @next/bundle-analyzer` first.')
-  console.warn('yarn analyze have not implement, coming soon...')
-  // spawnSync(`next`, [`build`, dir], { stdio: 'inherit' })
+  const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: true,
+  })
+  const config = withBundleAnalyzer(getConfig())
+  nextBuild(srcDir, config)
 }

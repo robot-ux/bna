@@ -7,8 +7,9 @@ import NextDocument, {
   DocumentContext,
 } from 'next/document'
 
-import { CSPHead } from './Csp'
+import { createNonce, CSPHead } from './Csp'
 import { SeoHead } from './SeoHead'
+import { ServerStyleSheet } from 'styled-components'
 
 interface Props {
   styleTags: any
@@ -23,42 +24,37 @@ export { SeoHead, CSPHead, Head }
 
 export class Document extends NextDocument<Props> {
   static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await NextDocument.getInitialProps(ctx)
-    return { ...initialProps }
+    const sheet = new ServerStyleSheet()
+    const { renderPage } = ctx
+    const nonce = createNonce()
+
+    try {
+      ctx.renderPage = () =>
+        renderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        })
+
+      const initialProps = await NextDocument.getInitialProps(ctx)
+      const styleTagsNotNonce = sheet.getStyleElement()
+      const styleTags = React.Children.map(styleTagsNotNonce, (child) =>
+        React.cloneElement<any>(child, { nonce }),
+      )
+
+      return {
+        ...initialProps,
+        nonce,
+        styles: (
+          <>
+            {initialProps.styles}
+            {styleTags}
+          </>
+        ),
+      }
+    } finally {
+      sheet.seal()
+    }
   }
-
-  // static async getInitialProps(ctx: DocumentContext) {
-  //   const sheet = new ServerStyleSheet()
-  //   const { renderPage } = ctx
-  //   const nonce = createNonce()
-
-  //   try {
-  //     ctx.renderPage = () =>
-  //       renderPage({
-  //         enhanceApp: (App) => (props) =>
-  //           sheet.collectStyles(<App {...props} />),
-  //       })
-
-  //     const initialProps = await NextDocument.getInitialProps(ctx)
-  //     const styleTagsNotNonce = sheet.getStyleElement()
-  //     const styleTags = React.Children.map(styleTagsNotNonce, (child) =>
-  //       React.cloneElement<any>(child, { nonce }),
-  //     )
-
-  //     return {
-  //       ...initialProps,
-  //       nonce,
-  //       styles: (
-  //         <>
-  //           {initialProps.styles}
-  //           {styleTags}
-  //         </>
-  //       ),
-  //     }
-  //   } finally {
-  //     sheet.seal()
-  //   }
-  // }
 
   render() {
     const { nonce, customBody, customHead } = this.props

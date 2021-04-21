@@ -7,7 +7,8 @@
   ],
   "scripts": {
     "watch": "lerna run watch --parallel",
-    "bootstrap": "lerna bootstrap && lerna run build --stream && lerna link",
+    "bootstrap": "lerna bootstrap && lerna link",
+    "build": "lerna run build --stream",
     "publish": "lerna publish"
   },
   "prettier": {

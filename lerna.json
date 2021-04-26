@@ -4,5 +4,13 @@
   ],
   "useWorkspaces": true,
   "version": "0.0.18",
-  "npmClient": "yarn"
+  "npmClient": "yarn",
+  "command": {
+    "run": {
+      "npmClient": "yarn"
+    },
+    "version": {
+      "message": "chore(release): publish %s"
+    }
+  }
 }

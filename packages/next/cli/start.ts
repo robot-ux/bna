@@ -1,7 +1,7 @@
 import next from 'next'
 import { createServer } from 'http'
 import { loadEnvConfig } from '@next/env'
-import { srcDir, getConfig } from '../utils/'
+import { srcDir, getConfig } from '../utils'
 
 const port = parseInt(process.env.PORT || '3000', 10)
 

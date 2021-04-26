@@ -21,14 +21,17 @@
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
-    "@commitlint/config-conventional": "^12.1.1",
     "husky": "4.3.8",
     "lerna": "^4.0.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "commitlint": {
+    "extends": [
+      "@bna/commitlint-config"
+    ]
   }
 }

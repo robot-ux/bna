@@ -9,7 +9,7 @@
     "watch": "lerna run watch --parallel",
     "bootstrap": "lerna bootstrap && lerna link",
     "build": "lerna run build --stream",
-    "publish": "lerna publish"
+    "publish": "HUSKY_SKIP_HOOKS=1 lerna publish"
   },
   "prettier": {
     "parser": "typescript",

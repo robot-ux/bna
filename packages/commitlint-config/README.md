@@ -2,6 +2,26 @@
 
 Reference: https://www.conventionalcommits.org/en/v1.0.0/
 
+## How to use
+```json
+// package.json
+{
+  "commitlint": {
+    "extends": [
+      "@bna/commitlint-config"
+    ]
+  }
+}
+
+// For monorepo
+{
+  "commitlint": {
+    "extends": [
+      "@bna/commitlint-config/lerna"
+    ]
+  }
+}
+```
 
 ### Commit Message [Type](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#type)
 Must be one of the following:

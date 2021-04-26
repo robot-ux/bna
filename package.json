@@ -31,7 +31,7 @@
   },
   "commitlint": {
     "extends": [
-      "@bna/commitlint-config"
+      "@bna/commitlint-config/lerna"
     ]
   }
 }

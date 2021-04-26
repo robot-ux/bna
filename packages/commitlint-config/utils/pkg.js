@@ -4,9 +4,7 @@ const resolvePkg = require('resolve-pkg')
 const Globby = require('globby')
 const semver = require('semver')
 
-module.exports = {
-  getPackages,
-}
+let appPkg = {}
 
 function getPackages(context) {
   return Promise.resolve()
@@ -14,7 +12,9 @@ function getPackages(context) {
       const ctx = context || {}
       const cwd = ctx.cwd || process.cwd()
 
-      const { workspaces } = require(Path.join(cwd, 'package.json'))
+      appPkg = require(Path.join(cwd, 'package.json'))
+      const { workspaces, name } = appPkg
+
       if (Array.isArray(workspaces) && workspaces.length) {
         // use yarn workspaces
         return Globby(
@@ -43,7 +43,9 @@ function getPackages(context) {
       return getPackages(cwd)
     })
     .then((packages) => {
-      return packages
+      const pkgs = [appPkg].concat(packages)
+
+      return pkgs
         .map((pkg) => pkg.name)
         .filter(Boolean)
         .map((name) => (name.charAt(0) === '@' ? name.split('/')[1] : name))
@@ -53,4 +55,8 @@ function getPackages(context) {
 function getLernaVersion(cwd) {
   return require(Path.join(resolvePkg('lerna', { cwd }), 'package.json'))
     .version
+}
+
+module.exports = {
+  getPackages,
 }

@@ -3,7 +3,7 @@
     "packages/*"
   ],
   "useWorkspaces": true,
-  "version": "0.0.19",
+  "version": "0.0.20",
   "npmClient": "yarn",
   "command": {
     "run": {
@@ -11,7 +11,10 @@
     },
     "version": {
       "message": "chore(release): publish %s",
-      "allowBranch": ["main", "master"],
+      "allowBranch": [
+        "main",
+        "master"
+      ],
       "conventionalCommits": true
     }
   }

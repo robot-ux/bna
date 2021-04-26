@@ -74,9 +74,10 @@ jobs:
           scope: '@bna'
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: yarn semantic-release --branches ${{ GITHUB_HEAD_REF }}
+      - run: yarn semantic-release --branches *
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: set deployment status to success
         id: successful_deployment

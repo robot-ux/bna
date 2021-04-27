@@ -34,5 +34,8 @@
     "extends": [
       "@bna/commitlint-config/lerna"
     ]
+  },
+  "release": {
+    "branches": ["master", { "name": "*", "prerelease": true, "channel": "beta" }]
   }
 }

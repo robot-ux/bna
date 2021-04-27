@@ -37,6 +37,14 @@ module.exports = class extends Generator {
   writing() {
     const copyPath = this.answers.name
 
+    // Copy all dotfiles
+    this.fs.copy(this.templatePath('./**/*'), this.destinationRoot(), {
+      globOptions: {
+        dot: true,
+        ignore: ['**/node_modules', '**/.next', 'README.md', 'package.json'],
+      },
+    })
+
     // Copy package.json
     this.fs.copyTpl(
       this.templatePath('package.json'),
@@ -46,7 +54,7 @@ module.exports = class extends Generator {
         description: this.answers.description,
       },
     )
-
+    // Copy README.md
     this.fs.copyTpl(
       this.templatePath('README.md'),
       this.destinationPath('README.md'),

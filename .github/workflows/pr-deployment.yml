@@ -100,18 +100,18 @@ jobs:
       - name: Yarn build
         id: lerna_publish
         run: |
-          echo "lerna notice shasum:        9aaf3d8d3e78db7919466d1f26006b8d3db36b15 lerna notice integrity:     sha512-DMKR5V2UPFDol[...]f3HGHOvq6zItQ== lerna notice total files:   34                                       lerna notice Successfully published:
+          echo "::set-output name=publish-log::$(echo 'lerna notice shasum:        9aaf3d8d3e78db7919466d1f26006b8d3db36b15 lerna notice integrity:     sha512-DMKR5V2UPFDol[...]f3HGHOvq6zItQ== lerna notice total files:   34                                       lerna notice Successfully published:
           lerna success published 3 packages
           - @bna/commitlint-config@0.0.27-alpha.0+5c359c1
           - @bna/generator@0.0.27-alpha.0+5c359c1
           - @bna/next@0.0.27-alpha.0+5c359c1
-          Done in 12.03s."
+          Done in 12.03s.')"
 
       - name: Yarn build
         id: lerna_publish_comment
         run: |
-          echo "${{ steps.lerna_publish.outputs.stdout }}"
-          result=${{ steps.lerna_publish.outputs.stdout }}
+          echo "${{ steps.lerna_publish.outputs.publish-log }}"
+          result=${{ steps.lerna_publish.outputs.publish-log }}
           echo ${result##*Successfully published:}
 
       - name: Create version comment

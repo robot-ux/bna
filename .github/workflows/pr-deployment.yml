@@ -78,7 +78,8 @@ jobs:
 
       - name: Lerna publish
         run: |
-          echo "::set-output name=publish-log::$(yarn lerna publish --canary --no-git-tag-version --no-push --conventional-commits=false --yes)";
+          yarn lerna publish --canary --no-git-tag-version --no-push --conventional-commits=false --yes 2>&1 | tee tmp.log
+          echo "::set-output name=publish-log::$(cat tmp.log)";
         id: lerna_publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -99,17 +100,7 @@ jobs:
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
 
-      # - name: Yarn build
-      #   id: lerna_publish
-      #   run: |
-      #     echo "::set-output name=publish-log::$(echo 'lerna notice shasum:        9aaf3d8d3e78db7919466d1f26006b8d3db36b15 lerna notice integrity:     sha512-DMKR5V2UPFDol[...]f3HGHOvq6zItQ== lerna notice total files:   34                                       lerna notice Successfully published:\n
-      #     lerna success published 3 packages
-      #     - @bna/commitlint-config@0.0.27-alpha.0+5c359c1
-      #     - @bna/generator@0.0.27-alpha.0+5c359c1
-      #     - @bna/next@0.0.27-alpha.0+5c359c1
-      #     Done in 12.03s.')"
-
-      - name: Yarn build
+      - name: Get publish log
         id: lerna_publish_comment
         run: |
           result="${{ steps.lerna_publish.outputs.publish-log }}"

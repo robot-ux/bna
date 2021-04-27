@@ -78,8 +78,11 @@ jobs:
 
       - name: Lerna publish
         run: |
-          yarn lerna publish --canary --no-git-tag-version --no-push --conventional-commits=false --yes 2>&1 | tee tmp.log
-          echo "::set-output name=publish-log::$(cat tmp.log)";
+          yarn lerna publish --canary --no-git-tag-version --no-push --conventional-commits=false --yes 2>&1 | tee publish-tmp.out
+          output="$(cat publish-tmp.out)"
+          output="${output//$'\n'/\\n}"
+          output="${output// / }"
+          echo "::set-output name=publish-log::$output";
         id: lerna_publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

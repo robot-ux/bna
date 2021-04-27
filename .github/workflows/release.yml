@@ -6,10 +6,10 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
           scope: '@bna'
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: yarn semantic-release --branches main
+      - run: yarn semantic-release --branches master
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

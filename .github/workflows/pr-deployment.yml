@@ -100,24 +100,24 @@ jobs:
       - name: Yarn build
         id: lerna_publish
         run: |
-          echo 'lerna notice shasum:        9aaf3d8d3e78db7919466d1f26006b8d3db36b15 lerna notice integrity:     sha512-DMKR5V2UPFDol[...]f3HGHOvq6zItQ== lerna notice total files:   34                                       lerna notice Successfully published:
+          echo "lerna notice shasum:        9aaf3d8d3e78db7919466d1f26006b8d3db36b15 lerna notice integrity:     sha512-DMKR5V2UPFDol[...]f3HGHOvq6zItQ== lerna notice total files:   34                                       lerna notice Successfully published:
           lerna success published 3 packages
           - @bna/commitlint-config@0.0.27-alpha.0+5c359c1
           - @bna/generator@0.0.27-alpha.0+5c359c1
           - @bna/next@0.0.27-alpha.0+5c359c1
-          Done in 12.03s.'
+          Done in 12.03s."
 
       - name: Yarn build
         id: lerna_publish_comment
         run: |
-          result=`echo "${{ steps.lerna_publish.outputs.data }}"`
+          result=`echo "${{ steps.lerna_publish.outputs.* }}"`
           echo ${result##*Successfully published:}
 
       - name: Create version comment
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: ${{ steps.lerna_publish_comment.outputs.data }}
+          body: ${{ steps.lerna_publish_comment.outputs.* }}
           reactions: eyes, hooray, rocket
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'

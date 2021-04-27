@@ -110,14 +110,14 @@ jobs:
       - name: Yarn build
         id: lerna_publish_comment
         run: |
-          result=`echo "${{ steps.lerna_publish.outputs.* }}"`
+          result=${{ steps.lerna_publish.outputs.build-log }}
           echo ${result##*Successfully published:}
 
       - name: Create version comment
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: ${{ steps.lerna_publish_comment.outputs.* }}
+          body: ${{ steps.lerna_publish_comment.outputs.build-log }}
           reactions: eyes, hooray, rocket
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'

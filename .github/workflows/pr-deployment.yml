@@ -63,6 +63,7 @@ jobs:
 
       - name: deploy the pull request
         uses: actions/checkout@v2
+
       - name: Setup git user
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -74,7 +75,9 @@ jobs:
           scope: '@bna'
       - run: yarn install --frozen-lockfile
       - run: yarn build
+
       - run: yarn lerna publish --canary --no-git-tag-version --no-push --conventional-commits=false --yes
+        id: lerna_publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -91,6 +94,17 @@ jobs:
           log_url: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           mediaType: '{"previews": ["ant-man"]}'
           state: success
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+
+      - name: Create version comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            result=`echo "${{ steps.lerna_publish.outputs.data }}"`
+            echo ${result##*Successfully published:}
+          reactions: eyes, hooray, rocket
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
 

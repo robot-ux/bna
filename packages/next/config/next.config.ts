@@ -24,12 +24,12 @@ const webpack = (config: any, options: any) => {
 /**
  * Fix load runtime env failed
  */
-const _getPublicEnv = () => {
+const _getPublicEnv = (prefix: string) => {
   const envs = process.env
   const res: any = {}
 
   Object.keys(envs).forEach((k) => {
-    if (k.startsWith('NEXT_PUBLIC_')) {
+    if (k.startsWith(prefix)) {
       res[k] = envs[k]
     }
   })
@@ -46,7 +46,10 @@ export default () => ({
     return commitHash
   },
   publicRuntimeConfig: {
-    ..._getPublicEnv(),
+    ..._getPublicEnv('NEXT_PUBLIC_'),
+  },
+  serverRuntimeConfig: {
+    ..._getPublicEnv('NEXT_PRIVATE_'),
   },
   future: {
     webpack5: true,

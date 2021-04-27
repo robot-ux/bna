@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { NextSeo, NextSeoProps } from 'next-seo'
 
-const DEFAULT_FAVICON = `/images/favicon.png`
+const DEFAULT_FAVICON = `/images/favicon.ico`
 const DEFAULT_IMAGE = `/images/dex_twitter.png`
 
 export interface ISeoHead extends NextSeoProps {

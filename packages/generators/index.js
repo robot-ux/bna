@@ -3,7 +3,7 @@ const { Command } = require('commander')
 const yeoman = require('yeoman-environment')
 
 const pkg = require('./package.json')
-const BasicNext = require('./basic-next')
+const NextBasic = require('./next-basic')
 const chalk = require('chalk')
 
 const env = yeoman.createEnv()
@@ -11,8 +11,8 @@ const types = []
 
 const subs = [
   {
-    name: 'basic-next',
-    generator: BasicNext,
+    name: 'next-basic',
+    generator: NextBasic,
   },
 ]
 

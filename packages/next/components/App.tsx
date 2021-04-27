@@ -1,3 +1,5 @@
-import NextApp from 'next/app'
+import NextApp, { AppContext, AppInitialProps } from 'next/app'
 
-export { NextApp }
+export type { AppContext, AppInitialProps }
+
+export { NextApp as App }

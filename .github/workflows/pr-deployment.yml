@@ -1,4 +1,4 @@
-name: Deploy on PR Branch
+name: Deploy on pr branch
 
 on:
   issue_comment:

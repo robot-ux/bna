@@ -107,13 +107,17 @@ jobs:
           - @bna/next@0.0.27-alpha.0+5c359c1
           Done in 12.03s.'
 
+      - name: Yarn build
+        id: lerna_publish_comment
+        run: |
+          result=`echo "${{ steps.lerna_publish.outputs.data }}"`
+          echo ${result##*Successfully published:}
+
       - name: Create version comment
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: |
-            result=`echo "${{ steps.lerna_publish.outputs.data }}"`
-            echo ${result##*Successfully published:}
+          body: ${{ steps.lerna_publish_comment.outputs.data }}
           reactions: eyes, hooray, rocket
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'

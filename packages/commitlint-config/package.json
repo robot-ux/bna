@@ -1,6 +1,6 @@
 {
   "name": "@bna/commitlint-config",
-  "version": "0.0.26",
+  "version": "0.1.0",
   "description": "Shareable commitlint config enforcing conventional commits",
   "author": "robot-ux <robot.ux@protonmail.com>",
   "homepage": "https://github.com/robot-ux/bna#readme",

@@ -110,6 +110,8 @@ jobs:
       - name: Yarn build
         id: lerna_publish_comment
         run: |
+          echo "log: ${{ steps.lerna_publish.outputs.build-log }}"
+          echo "${{ steps.lerna_publish.outputs }}"
           result=${{ steps.lerna_publish.outputs.build-log }}
           echo ${result##*Successfully published:}
 

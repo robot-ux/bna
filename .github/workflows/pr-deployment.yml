@@ -81,8 +81,9 @@ jobs:
           yarn lerna publish --canary --no-git-tag-version --no-push --conventional-commits=false --yes 2>&1 | tee publish-tmp.out
           output="$(cat publish-tmp.out)"
           output="${output##*Successfully published:}"
-          output="${output//$'\n'/\\n}"
-          output="${output// / }"
+          output="${output//'%'/'%25'}"
+          output="${output//$'\n'/'%0A'}"
+          output="${output//$'\r'/'%0D'}"
           echo "::set-output name=publish-log::$output";
         id: lerna_publish
         env:

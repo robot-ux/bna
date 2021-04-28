@@ -9,7 +9,8 @@
   "scripts": {
     "watch": "lerna run watch --parallel",
     "bootstrap": "yarn install && lerna link",
-    "build": "lerna run build --stream"
+    "build": "lerna run build --stream",
+    "version": "HUSKY_SKIP_HOOKS=1 lerna version"
   },
   "prettier": {
     "parser": "typescript",

@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - master
+    tags:
+      - "v[0-9]+.[0-9]+"
 
 jobs:
   build:
@@ -25,8 +27,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: |
-          version=${{ github.event.head_commit.message }}
-          version=test $version || echo "patch"
+          version=echo ${GITHUB_REF##*/}
           echo $version
           yarn lerna publish $version --create-release github --conventional-commits --yes
         env:

@@ -10,7 +10,6 @@
       "npmClient": "yarn"
     },
     "version": {
-      "conventionalCommits": true,
       "allowBranch": [
         "master"
       ]

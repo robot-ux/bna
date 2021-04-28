@@ -1,5 +1,8 @@
 import { execSync } from 'child_process'
+import { existsSync } from 'fs'
 import path from 'path'
+
+const customConfig = path.join(process.cwd(), 'next.config.js')
 
 let commitHash = 'no-git-commit'
 try {
@@ -37,7 +40,7 @@ const _getPublicEnv = (prefix: string) => {
   return res
 }
 
-export default () => ({
+const baseConfig = {
   headers,
   webpack,
   assetPrefix: process.env.NEXT_PUBLIC_STATIC_HOST,
@@ -54,4 +57,9 @@ export default () => ({
   future: {
     webpack5: true,
   },
+}
+
+export default () => ({
+  ...(existsSync(customConfig) ? require(customConfig) : {}),
+  ...baseConfig,
 })

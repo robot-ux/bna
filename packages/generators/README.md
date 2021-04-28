@@ -5,10 +5,10 @@ A scaffolding tool
 
 1. Install `create-bna-app`
 ```sh
-yarn global add create-bna-app
+yarn global add @bna/generator
 ```
 
-2. Create app via `--template`
+2. Create app with `--template`
 ```sh
 create-bna-app --template next-basic
 ```

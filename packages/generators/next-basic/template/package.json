@@ -1,6 +1,6 @@
 {
-  "name": "name",
-  "description": "de",
+  "name": "<%= name %>",
+  "description": "<%= description %>",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@binance-chain/honeycomb": "^1.1.0-alpha.283",
-    "@bna/next": "/Users/yolin/projects/chain/bna/packages/next",
+    "@bna/next": "latest",
     "@types/react": "^16.9.2",
     "@types/styled-components": "^5.1.4",
     "big.js": "^5.2.2",

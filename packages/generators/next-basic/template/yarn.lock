@@ -161,8 +161,10 @@
     react-toastify "^7.0.1"
     swiper "^6.4.5"
 
-"@bna/next@file:../../../next":
+"@bna/next@latest":
   version "0.0.26"
+  resolved "https://registry.npmjs.org/@bna/next/-/next-0.0.26.tgz#bc7a827e680545ab2b41592277ace3958a0917a6"
+  integrity sha512-+BV5QAp7wnueRcLECLuzth0q02BUrPt/js8kwNKOzlDP/I8ndw1xiuZANoTYP8d7+zW/Ou4LLqZ/aAEIVD1TUw==
   dependencies:
     "@next/bundle-analyzer" "^10.1.3"
     "@types/node" "^12.12.21"

@@ -27,7 +27,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: |
-          version=echo ${GITHUB_REF##*/}
+          version=${GITHUB_REF##*/}
           echo $version
           yarn lerna publish $version --create-release github --conventional-commits --yes
         env:

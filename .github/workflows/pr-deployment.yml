@@ -78,7 +78,7 @@ jobs:
 
       - name: Lerna publish
         run: |
-          yarn lerna publish --canary --no-git-tag-version --no-push --preid $(git rev-parse --short HEAD) --yes 2>&1 | tee publish-tmp.out
+          yarn lerna publish --canary --preid $(git rev-parse --short HEAD) --yes 2>&1 | tee publish-tmp.out
           output="$(cat publish-tmp.out)"
           output="${output##*Successfully published:}"
           output="${output//'%'/'%25'}"

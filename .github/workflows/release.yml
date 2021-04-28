@@ -24,7 +24,7 @@ jobs:
           scope: '@bna'
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: yarn workspaces run semantic-release -e semantic-release-monorepo --branchs master
+      - run: yarn lerna publish patch --conventional-commits --create-release github --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

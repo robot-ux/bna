@@ -3,17 +3,11 @@
     "packages/*"
   ],
   "useWorkspaces": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "npmClient": "yarn",
   "command": {
     "run": {
       "npmClient": "yarn"
-    },
-    "version": {
-      "allowBranch": [
-        "master"
-      ],
-      "conventionalCommits": true
     }
   }
 }

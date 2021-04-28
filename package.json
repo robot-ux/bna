@@ -1,6 +1,7 @@
 {
   "name": "bna",
   "version": "1.0.0",
+  "description": "A monorepo for managing all FE infrastructure projects",
   "private": true,
   "workspaces": [
     "packages/*"

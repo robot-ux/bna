@@ -24,7 +24,11 @@ jobs:
           scope: '@bna'
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: yarn lerna publish patch --conventional-commits --create-release github --yes
+      - run: |
+          version=${{ github.event.head_commit.message }}
+          version=test $version || echo "patch"
+          echo $version
+          yarn lerna publish $version --create-release github --conventional-commits --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -8,6 +8,12 @@
   "command": {
     "run": {
       "npmClient": "yarn"
+    },
+    "version": {
+      "allowBranch": [
+        "master"
+      ],
+      "conventionalCommits": true
     }
   }
 }

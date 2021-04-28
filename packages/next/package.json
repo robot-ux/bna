@@ -1,6 +1,6 @@
 {
   "name": "@bna/next",
-  "version": "0.1.3",
+  "version": "1.0.1",
   "description": "A simple wrapper for Next App",
   "author": "robox-ux",
   "bin": {

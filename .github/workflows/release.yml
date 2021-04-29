@@ -4,9 +4,14 @@
 name: Release
 
 on:
-  create:
-    tags:
-      - "v[0-9]+.[0-9]+"
+  push:
+    branches:
+      - master
+
+# on:
+#   create:
+#     tags:
+#       - "v[0-9]+.[0-9]+"
 
 jobs:
   build:
@@ -25,7 +30,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: |
-          yarn lerna publish from-package --create-release github --yes
+          HUSKY_SKIP_HOOKS=1 yarn lerna publish --create-release github --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

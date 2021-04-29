@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0 (2021-04-29)
+
+
+### Features
+
+* **bna:** test release ([cf5cc4e](https://github.com/robot-ux/bna/commit/cf5cc4ec2d0460fb9cc019049920cab673b4f946))
+
+
+
+
+
 ## [1.0.4](https://github.com/robot-ux/bna/compare/v1.0.3...v1.0.4) (2021-04-29)
 
 

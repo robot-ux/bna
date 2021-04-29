@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@binance-chain/honeycomb": "^1.1.0-alpha.283",
-    "@bna/next": "latest",
+    "@bna/next": "^1.1.0",
     "@types/react": "^16.9.2",
     "@types/styled-components": "^5.1.4",
     "big.js": "^5.2.2",
@@ -36,16 +36,14 @@
       "post-merge": "yarn"
     }
   },
+  "babel": {
+    "presets": ["next/babel"],
+    "plugins": [["styled-components", { "ssr": true }]]
+  },
   "eslintConfig": {
     "extends": [
       "react-app"
     ]
   },
-  "prettier": {
-    "parser": "typescript",
-    "singleQuote": true,
-    "semi": false,
-    "trailingComma": "all",
-    "tabWidth": 2
-  }
+  "prettier": "@bna/prettier-config"
 }

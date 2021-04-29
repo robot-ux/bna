@@ -42,7 +42,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app"
+      "@bna/eslint-config"
     ]
   },
   "prettier": "@bna/prettier-config"

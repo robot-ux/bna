@@ -41,4 +41,5 @@ const program = new Command()
   .parse()
 
 const { template } = program.opts()
+
 env.run(template)

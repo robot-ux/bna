@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/robot-ux/bna/compare/v1.0.3...v1.0.4) (2021-04-29)
+
+
+### Bug Fixes
+
+* **bna:** publish from-package ([5ce57b6](https://github.com/robot-ux/bna/commit/5ce57b621ea5ae26156064b8ee2d7a30f8466088))
+
+
+
+
+
 ## [1.0.3](https://github.com/robot-ux/bna/compare/v1.0.2...v1.0.3) (2021-04-28)
 
 

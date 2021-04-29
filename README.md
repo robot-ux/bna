@@ -1,5 +1,5 @@
 # bna
-> A monorepo for managing all FE infrastructure projects
+> `Binance Next App` is a monorepo for managing all FE infrastructure projects
 
 ## Projects
 - [next](./packages/next) Customize nextjs, Easier to use, for business development

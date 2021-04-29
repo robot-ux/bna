@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 const { Command } = require('commander')
 const yeoman = require('yeoman-environment')
+const chalk = require('chalk')
 
 const pkg = require('./package.json')
 const NextBasic = require('./next-basic')
-const chalk = require('chalk')
+const Typescript = require('./typescript')
 
 const env = yeoman.createEnv()
 const types = []
@@ -13,6 +14,10 @@ const subs = [
   {
     name: 'next-basic',
     generator: NextBasic,
+  },
+  {
+    name: 'typescript',
+    generator: Typescript,
   },
 ]
 
@@ -32,7 +37,7 @@ const program = new Command()
       console.log(
         `${chalk.yellow('Warning: ')} This template ${chalk.cyan(
           value,
-        )} is not exist. Only support ${chalk.cyan(types.join('|'))}`,
+        )} is not exist. Only support ${chalk.cyan(types.join(','))}`,
       )
 
       process.exit(0)

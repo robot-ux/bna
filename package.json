@@ -11,13 +11,7 @@
     "bootstrap": "yarn install && lerna link",
     "build": "lerna run build --stream"
   },
-  "prettier": {
-    "parser": "typescript",
-    "singleQuote": true,
-    "semi": false,
-    "trailingComma": "all",
-    "tabWidth": 2
-  },
+  "prettier": "@bna/prettier-config",
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",

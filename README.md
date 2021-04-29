@@ -1,11 +1,12 @@
 # bna
-> A monorepo for managing all FE infrastructure projects
+> `Binance Next App` is a monorepo for managing all FE infrastructure projects
 
 ## Projects
 - [next](./packages/next) Customize nextjs, Easier to use, for business development
 - [cra](./packages/cra) Customize CRA
 - [commitlint](./packages/commitlint-config) Unified commitlint rules
 - [generator](./packages/generators) A scaffolding tool
+- [prettier-config](./packages/prettier-config) Reusable config for Prettier
 
 ## Contributing
 1. Clone this repo

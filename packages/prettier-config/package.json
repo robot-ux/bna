@@ -1,11 +1,17 @@
 {
-  "name": "@bna/commitlint-config",
+  "name": "@bna/prettier-config",
   "version": "1.1.0",
-  "description": "Shareable commitlint config enforcing conventional commits",
+  "description": "Reusable config for Prettier",
+  "keywords": [
+    "Prettier"
+  ],
   "author": "robot-ux <robot.ux@protonmail.com>",
   "homepage": "https://github.com/robot-ux/bna#readme",
   "license": "MIT",
-  "main": "index.js",
+  "main": "prettier.config.js",
+  "files": [
+    "prettier.config.js"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -20,10 +26,6 @@
     "url": "https://github.com/robot-ux/bna/issues"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^12.1.1",
-    "globby": "^11.0.3",
-    "import-from": "^3.0.0",
-    "resolve-pkg": "^2.0.0",
-    "semver": "^7.3.5"
+    "prettier-eslint-cli": "^5.0.1"
   }
 }

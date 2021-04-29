@@ -1,12 +1,9 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
-
-name: Release
+name: Pre release
 
 on:
   push:
     branches:
-      - master
+      - next
 
 jobs:
   build:
@@ -24,8 +21,6 @@ jobs:
           scope: '@bna'
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: |
-          HUSKY_SKIP_HOOKS=1 yarn lerna publish --create-release github --yes
+      - run: yarn lerna publish --canary --preid "next.$(git rev-parse --short HEAD)" --pre-dist-tag=next -y
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

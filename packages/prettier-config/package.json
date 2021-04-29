@@ -24,5 +24,8 @@
   },
   "bugs": {
     "url": "https://github.com/robot-ux/bna/issues"
+  },
+  "devDependencies": {
+    "prettier-eslint-cli": "^5.0.1"
   }
 }

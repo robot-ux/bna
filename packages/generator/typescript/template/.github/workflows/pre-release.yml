@@ -21,6 +21,6 @@ jobs:
           scope: '@bna'
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: yarn lerna publish --canary --preid "next.$(git rev-parse --short HEAD)" --pre-dist-tag=next -y
+      - run: yarn publish --prerelease --preid "next.$(git rev-parse --short HEAD)" --pre-dist-tag=next -y
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

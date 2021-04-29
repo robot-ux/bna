@@ -25,7 +25,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: |
-          yarn lerna publish from-git --create-release github --yes
+          yarn lerna publish from-package --create-release github --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

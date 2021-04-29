@@ -14,8 +14,7 @@
       "allowBranch": [
         "master"
       ],
-      "conventionalCommits": true,
-      "noCommitHooks": true
+      "conventionalCommits": true
     }
   }
 }

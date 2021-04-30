@@ -8,9 +8,9 @@
   "author": "robot-ux <robot.ux@protonmail.com>",
   "homepage": "https://github.com/robot-ux/bna#readme",
   "license": "MIT",
-  "main": "prettier.config.js",
+  "main": "index.js",
   "files": [
-    "prettier.config.js"
+    "index.js"
   ],
   "publishConfig": {
     "access": "public"

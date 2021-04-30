@@ -2,43 +2,60 @@
   "name": "template",
   "version": "0.0.1",
   "description": "A typescript project template",
+  "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "module": "dist/mylib.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": ["dist", "src"],
   "publishConfig": {
     "access": "public"
   },
-  "license": "MIT",
-  "scripts": {
-    "prebuild": "rm -rf ./dist",
-    "build": "tsc",
-    "watch": "tsc --watch",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,json,md,html,yml}\""
+  "engines": {
+    "node": ">=10"
   },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "prettier": "@bna/prettier-config",
+  "author": "robot-ux",
   "devDependencies": {
+    "@bna/prettier-config": "^1.1.1",
     "@bna/commitlint-config": "^1.1.0",
-    "@bna/eslint-config": "^1.1.1-next.63ea221.0",
-    "@commitlint/cli": "^12.1.1",
-    "@types/jest": "^26.0.22",
+    "@bna/eslint-config": "^1.1.0",
+    "@size-limit/preset-small-lib": "^4.10.2",
     "husky": "4.3.8",
+    "size-limit": "^4.10.2",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.2.0",
     "typescript": "^4.2.4"
+  },
+  "commitlint": {
+    "extends": ["@bna/commitlint-config"]
   },
   "husky": {
     "hooks": {
+      "pre-commit": "tsdx lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "commitlint": {
-    "extends": [
-      "@bna/commitlint-config/lerna"
-    ]
-  },
+  "size-limit": [
+    {
+      "path": "dist/mylib.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/mylib.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "eslintConfig": {
-    "extends": [
-      "@bna/eslint-config"
-    ]
-  },
-  "prettier": "@bna/prettier-config"
+    "extends": ["@bna/eslint-config"]
+  }
 }

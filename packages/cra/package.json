@@ -1,6 +1,6 @@
 {
   "name": "@bna/cra",
-  "version": "1.1.1",
+  "version": "1.1.2-next.0",
   "main": "index.js",
   "license": "MIT",
   "publishConfig": {

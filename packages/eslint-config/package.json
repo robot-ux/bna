@@ -1,6 +1,6 @@
 {
   "name": "@bna/eslint-config",
-  "version": "1.1.1",
+  "version": "1.1.2-next.0",
   "description": "Reusable config for Eslint",
   "keywords": [
     "Eslint"

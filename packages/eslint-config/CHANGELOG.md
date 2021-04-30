@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.2-next.1 (2021-04-30)
+
+
+### Bug Fixes
+
+* **generator:** update typescript template ([ec85ab7](https://github.com/robot-ux/bna/commit/ec85ab79be4ae00bbeca012ac2217873d81d4eec))
+
+
+
+
+
 ## 1.1.2-next.0 (2021-04-30)
 
 

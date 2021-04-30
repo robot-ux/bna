@@ -6,7 +6,7 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - release
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn build
       - run: |
-          HUSKY_SKIP_HOOKS=1 yarn lerna publish --create-release github --yes
+          HUSKY_SKIP_HOOKS=1 yarn lerna publish --conventional-graduate --create-release github -y
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

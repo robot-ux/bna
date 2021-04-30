@@ -3,7 +3,7 @@ name: Pre release
 on:
   push:
     branches:
-      - next
+      - master
 
 jobs:
   build:
@@ -21,6 +21,6 @@ jobs:
           scope: '@bna'
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: yarn lerna publish --canary --preid "next.$(git rev-parse --short HEAD)" --pre-dist-tag=next -y
+      - run: HUSKY_SKIP_HOOKS=1  yarn lerna publish prerelease --preid next --dist-tag next --create-release github -y
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
